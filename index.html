@@ -21,7 +21,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
                 <div class="bg-gradient-to-r from-orange-600 to-orange-500 px-6 py-4">
-                    <h2 class="text-2xl font-bold text-white">Conference Standings</h2>
+                    <h2 class="text-2xl font-bold text-white">TEAM Standings</h2>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -32,8 +32,6 @@
                                 <th class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Team</th>
                                 <th class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">W</th>
                                 <th class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">L</th>
-                                <th class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">PCT</th>
-                                <th class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">GB</th>
                                 <th class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">Streak</th>
                             </tr>
                         </thead>
@@ -46,11 +44,9 @@
 
             <div class="mt-8 bg-white rounded-xl shadow-lg p-6">
                 <h3 class="text-lg font-bold text-gray-900 mb-4">Legend</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div><span class="font-semibold">W:</span> Wins</div>
                     <div><span class="font-semibold">L:</span> Losses</div>
-                    <div><span class="font-semibold">PCT:</span> Win Percentage</div>
-                    <div><span class="font-semibold">GB:</span> Games Behind</div>
                     <div><span class="font-semibold">Streak:</span> Current Win/Loss Streak</div>
                 </div>
             </div>
@@ -67,121 +63,95 @@
 
         // YOUR TEAM DATA GOES HERE
         const teams = [
-            // Example format - replace with your actual data:
              {
                  rank: 1,
                  name: "Payong Brothers",
                  wins: 3,
                  losses: 0,
-                 streak: "W1",  // W for win, L for loss, followed by number
-                 logo: "images/payong.jpg"  // Path to team logo image
+                 streak: "W1",
+                 logo: "images/payong.jpg"
              },
-
              {
                  rank: 2,
                  name: "Wasalak",
                  wins: 3,
                  losses: 0,
-                 streak: "W1",  // W for win, L for loss, followed by number
-                 logo: "images/alak.jpg"  // Path to team logo image
+                 streak: "W1",
+                 logo: "images/alak.jpg"
              },
-
              {
                  rank: 3,
                  name: "Thirdy",
                  wins: 2,
                  losses: 0,
-                 streak: "W2",  // W for win, L for loss, followed by number
-                 logo: "images/thirdy.jpg"  // Path to team logo image
+                 streak: "W2",
+                 logo: "images/thirdy.jpg"
              },
-
              {
                  rank: 4,
                  name: "Slasher",
                  wins: 2,
                  losses: 1,
-                 streak: "L1",  // W for win, L for loss, followed by number
-                 logo: "images/slasher.jpg"  // Path to team logo image
+                 streak: "L1",
+                 logo: "images/slasher.jpg"
              },
-
              {
                  rank: 5,
                  name: "Annex II",
                  wins: 1,
                  losses: 1,
-                 streak: "L1",  // W for win, L for loss, followed by number
-                 logo: "images/annex.jpg"  // Path to team logo image
+                 streak: "L1",
+                 logo: "images/annex.jpg"
              },
-
              {
                  rank: 6,
                  name: "Alak Pa More",
                  wins: 1,
                  losses: 1,
-                 streak: "W1",  // W for win, L for loss, followed by number
-                 logo: "images/alak pa more.jpg"  // Path to team logo image
+                 streak: "W1",
+                 logo: "images/alak pa more.jpg"
              },
-
              {
                  rank: 7,
                  name: "Mix Blood",
                  wins: 1,
                  losses: 2,
-                 streak: "L1",  // W for win, L for loss, followed by number
-                 logo: "images/bllod.jpg"  // Path to team logo image
+                 streak: "L1",
+                 logo: "images/bllod.jpg"
              },
-
              {
                  rank: 8,
                  name: "Eldorado",
                  wins: 0,
                  losses: 2,
-                 streak: "L2",  // W for win, L for loss, followed by number
-                 logo: "images/eldo.jpg"  // Path to team logo image
+                 streak: "L2",
+                 logo: "images/eldo.jpg"
              },
-
              {
                  rank: 9,
                  name: "Underrated",
                  wins: 0,
                  losses: 2,
-                 streak: "L2",  // W for win, L for loss, followed by number
-                 logo: "images/under.jpg"  // Path to team logo image
+                 streak: "L2",
+                 logo: "images/under.jpg"
              },
-
              {
                  rank: 10,
                  name: "D'League",
                  wins: 0,
                  losses: 1,
-                 streak: "L1",  // W for win, L for loss, followed by number
-                 logo: "images/dalig.jpg"  // Path to team logo image
+                 streak: "L1",
+                 logo: "images/dalig.jpg"
              },
-
              {
                  rank: 11,
                  name: "Bombateros",
                  wins: 0,
                  losses: 3,
-                 streak: "L3",  // W for win, L for loss, followed by number
-                 logo: "images/bomba.jpg"  // Path to team logo image
+                 streak: "L3",
+                 logo: "images/bomba.jpg"
              },
         ];
-
-        // Function to calculate win percentage
-        function calculatePCT(wins, losses) {
-            const total = wins + losses;
-            return total > 0 ? (wins / total).toFixed(3) : '.000';
-        }
-
-        // Function to calculate games behind
-        function calculateGB(teamWins, teamLosses, leaderWins, leaderLosses) {
-            if (teamWins === leaderWins && teamLosses === leaderLosses) {
-                return '-';
-            }
-            const gb = ((leaderWins - teamWins) + (teamLosses - leaderLosses)) / 2;
-            return gb.toFixed(1);
-        }
 
         // Function to get rank badge class
         function getRankBadgeClass(rank) {
@@ -206,7 +176,7 @@
             if (teams.length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="7" class="px-6 py-12 text-center text-gray-500">
+                        <td colspan="5" class="px-6 py-12 text-center text-gray-500">
                             <p class="text-lg font-semibold mb-2">No team data available</p>
                             <p class="text-sm">Add your team data to the 'teams' array in the script section</p>
                         </td>
@@ -215,12 +185,7 @@
                 return;
             }
 
-            const leaderWins = teams[0].wins;
-            const leaderLosses = teams[0].losses;
-
             teams.forEach(team => {
-                const pct = calculatePCT(team.wins, team.losses);
-                const gb = calculateGB(team.wins, team.losses, leaderWins, leaderLosses);
                 const rankBadgeClass = getRankBadgeClass(team.rank);
                 const streakBadgeClass = getStreakBadgeClass(team.streak);
 
@@ -237,8 +202,6 @@
                         </td>
                         <td class="px-6 py-4 text-center font-semibold text-gray-900">${team.wins}</td>
                         <td class="px-6 py-4 text-center font-semibold text-gray-600">${team.losses}</td>
-                        <td class="px-6 py-4 text-center font-semibold text-gray-900">${pct}</td>
-                        <td class="px-6 py-4 text-center text-gray-600">${gb}</td>
                         <td class="px-6 py-4 text-center">
                             <span class="inline-block px-3 py-1 ${streakBadgeClass} rounded-full text-sm font-semibold">${team.streak}</span>
                         </td>
