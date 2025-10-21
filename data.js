@@ -163,7 +163,7 @@ const schedule = [
      {
          date: "2025-10-25",
          Venue: "Terraza Village",
-         time:  "11:15 AM",
+         time:  "12:30 PM",
          team1: "mix-blood",          // Use team id
          team2: "annex-ii",          // Use team id
          score1: "",                  // Leave empty for upcoming games
