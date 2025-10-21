@@ -49,6 +49,7 @@ const teams = [
             { number: "10", name: "Castor", position: "NA", image: "images/players/ber.jpg"},
             { number: "27", name: "Montealto", position: "NA", image: "images/players/monte.jpg" },
             { number: "4", name: "Guion", position: "NA", image: "images/players/toy.jpg" },
+            { number: "00", name: "Cabiltes", position: "Free Agent", image: "images/players/ber.jpg" },
 
         ]
     },

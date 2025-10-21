@@ -8,35 +8,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gradient-to-br from-orange-50 to-blue-50 min-h-screen">
-    <!-- Navigation -->
+<body class="bg-gray-50 min-h-screen">
     <nav class="bg-white shadow-lg">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
-                <div class="text-2xl font-bold text-orange-600">AMTODA Basketball</div>
-                <div class="flex space-x-6">
-                    <a href="index.html" class="text-gray-700 hover:text-orange-600 font-semibold transition-colors">Standings</a>
-                    <a href="schedule.html" class="text-orange-600 font-semibold">Schedule</a>
-                    <a href="teams.html" class="text-gray-700 hover:text-orange-600 font-semibold transition-colors">Teams</a>
+                <div class="text-2xl font-bold text-amber-500">AMTODA Basketball</div>
+                <div class="flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-semibold transition-colors">Standings</a>
+                    <a href="schedule.html" class="text-indigo-600 font-extrabold border-b-2 border-amber-500 pb-1 transition-colors">Schedule</a>
+                    <a href="teams.html" class="text-gray-700 hover:text-indigo-600 font-semibold transition-colors">Teams</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="container mx-auto px-4 py-8">
-        <header class="text-center mb-12">
-            <div class="inline-block bg-orange-600 text-white px-6 py-3 rounded-full mb-4">
-                <span class="text-sm font-semibold tracking-wider">2025-26 SEASON</span>
+    <div class="container mx-auto px-4 py-12">
+        <header class="text-center mb-16">
+            <div class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-full mb-4 shadow-md">
+                <span class="text-sm font-bold tracking-widest uppercase">2025-26 SEASON</span>
             </div>
-            <h1 class="text-5xl font-bold text-gray-900 mb-2">Game Schedule</h1>
-            <p class="text-gray-600 text-lg">Complete schedule and results</p>
+            <h1 class="text-6xl font-extrabold text-gray-900 mb-2 leading-tight">Game Schedule</h1>
+            <p class="text-gray-500 text-lg">Complete schedule and results</p>
         </header>
 
         <div class="max-w-6xl mx-auto">
-            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden p-6">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden p-8">
                 <div id="schedule-container">
-                    <!-- Schedule will be rendered here -->
-                </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -49,8 +47,8 @@
             if (schedule.length === 0) {
                 container.innerHTML = `
                     <div class="text-center py-12 text-gray-500">
-                        <p class="text-lg font-semibold mb-2">No games scheduled</p>
-                        <p class="text-sm">Add your schedule data to the 'schedule' array in data.js</p>
+                        <p class="text-xl font-bold mb-2">No games scheduled</p>
+                        <p class="text-md">Add your schedule data to the 'schedule' array in data.js</p>
                     </div>
                 `;
                 return;
@@ -78,8 +76,8 @@
                 });
 
                 html += `
-                    <div class="mb-8">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-orange-500 pb-2">${formattedDate}</h2>
+                    <div class="mb-10">
+                        <h2 class="text-2xl font-extrabold text-indigo-600 mb-4 border-b-4 border-amber-400 pb-2">${formattedDate}</h2>
                         <div class="space-y-4">
                 `;
 
@@ -89,36 +87,40 @@
                     
                     let statusBadge = '';
                     if (game.status === 'completed') {
-                        statusBadge = '<span class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-full font-semibold">Final</span>';
+                        statusBadge = '<span class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-full font-bold">FINAL</span>';
                     } else if (game.status === 'live') {
-                        statusBadge = '<span class="text-xs bg-red-500 text-white px-3 py-1 rounded-full font-semibold animate-pulse">Live</span>';
+                        statusBadge = '<span class="text-xs bg-red-600 text-white px-3 py-1 rounded-full font-bold animate-pulse">LIVE NOW</span>';
                     } else {
-                        statusBadge = '<span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-semibold">Upcoming</span>';
+                        statusBadge = '<span class="text-xs bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-bold">UPCOMING</span>';
                     }
 
+                    // Determine winning team color
+                    const score1Class = game.score1 !== undefined && game.score1 > game.score2 ? 'text-indigo-600 font-extrabold' : 'text-gray-700 font-bold';
+                    const score2Class = game.score2 !== undefined && game.score2 > game.score1 ? 'text-indigo-600 font-extrabold' : 'text-gray-700 font-bold';
+
                     html += `
-                        <div class="bg-gradient-to-r from-gray-50 to-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-lg font-semibold text-gray-700">${game.time}</span>
+                        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-100 transform hover:scale-[1.01] duration-300">
+                            <div class="flex items-center justify-between mb-4 border-b pb-2 border-gray-100">
+                                <span class="text-lg font-bold text-gray-700">${game.time} @ ${game.Venue}</span>
                                 ${statusBadge}
                             </div>
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center flex-1">
-                                    <img src="${team1.logo}" alt="${team1.name}" class="w-12 h-12 object-contain mr-4">
-                                    <a href="team.html?id=${team1.id}" class="text-xl font-bold text-gray-900 hover:text-orange-600 transition-colors">${team1.name}</a>
+                                    <img src="${team1.logo}" alt="${team1.name}" class="w-12 h-12 object-contain mr-4 rounded-full border border-gray-200 p-1">
+                                    <a href="team.html?id=${team1.id}" class="text-xl font-extrabold text-gray-900 hover:text-amber-500 transition-colors">${team1.name}</a>
                                 </div>
-                                <div class="px-6">
-                                    ${game.score1 !== undefined ? `
+                                <div class="px-8 flex-shrink-0">
+                                    ${game.score1 !== undefined && game.score1 !== "" ? `
                                         <div class="flex items-center space-x-4">
-                                            <span class="text-3xl font-bold ${game.score1 > game.score2 ? 'text-green-600' : 'text-gray-600'}">${game.score1}</span>
-                                            <span class="text-2xl font-bold text-gray-400">-</span>
-                                            <span class="text-3xl font-bold ${game.score2 > game.score1 ? 'text-green-600' : 'text-gray-600'}">${game.score2}</span>
+                                            <span class="text-4xl ${score1Class}">${game.score1}</span>
+                                            <span class="text-2xl font-bold text-gray-400">|</span>
+                                            <span class="text-4xl ${score2Class}">${game.score2}</span>
                                         </div>
-                                    ` : '<span class="text-2xl font-bold text-gray-400">vs</span>'}
+                                    ` : '<span class="text-2xl font-bold text-indigo-600">VS</span>'}
                                 </div>
-                                <div class="flex items-center flex-1 justify-end">
-                                    <a href="team.html?id=${team2.id}" class="text-xl font-bold text-gray-900 hover:text-orange-600 transition-colors">${team2.name}</a>
-                                    <img src="${team2.logo}" alt="${team2.name}" class="w-12 h-12 object-contain ml-4">
+                                <div class="flex items-center flex-1 justify-end text-right">
+                                    <a href="team.html?id=${team2.id}" class="text-xl font-extrabold text-gray-900 hover:text-amber-500 transition-colors">${team2.name}</a>
+                                    <img src="${team2.logo}" alt="${team2.name}" class="w-12 h-12 object-contain ml-4 rounded-full border border-gray-200 p-1">
                                 </div>
                             </div>
                         </div>
