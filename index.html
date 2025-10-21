@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gradient-to-br from-orange-50 to-blue-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-orange-600">AMTODA Basketball</div>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-600 font-semibold transition-colors">Standings</a>
+                    <a href="schedule.html" class="text-gray-700 hover:text-orange-600 font-semibold transition-colors">Schedule</a>
+                    <a href="teams.html" class="text-gray-700 hover:text-orange-600 font-semibold transition-colors">Teams</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container mx-auto px-4 py-8">
         <header class="text-center mb-12">
             <div class="inline-block bg-orange-600 text-white px-6 py-3 rounded-full mb-4">
@@ -53,6 +67,7 @@
         </div>
     </div>
 
+    <script src="data.js"></script>
     <script>
         // Set current date
         document.getElementById('update-date').textContent = new Date().toLocaleDateString('en-US', { 
@@ -60,98 +75,6 @@
             month: 'long', 
             day: 'numeric' 
         });
-
-        // YOUR TEAM DATA GOES HERE
-        const teams = [
-             {
-                 rank: 1,
-                 name: "Payong Brothers",
-                 wins: 3,
-                 losses: 0,
-                 streak: "W1",
-                 logo: "images/payong.jpg"
-             },
-             {
-                 rank: 2,
-                 name: "Wasalak",
-                 wins: 3,
-                 losses: 0,
-                 streak: "W1",
-                 logo: "images/alak.jpg"
-             },
-             {
-                 rank: 3,
-                 name: "Thirdy",
-                 wins: 2,
-                 losses: 0,
-                 streak: "W2",
-                 logo: "images/thirdy.jpg"
-             },
-             {
-                 rank: 4,
-                 name: "Slasher",
-                 wins: 2,
-                 losses: 1,
-                 streak: "L1",
-                 logo: "images/slasher.jpg"
-             },
-             {
-                 rank: 5,
-                 name: "Annex II",
-                 wins: 1,
-                 losses: 1,
-                 streak: "L1",
-                 logo: "images/annex.jpg"
-             },
-             {
-                 rank: 6,
-                 name: "Alak Pa More",
-                 wins: 1,
-                 losses: 1,
-                 streak: "W1",
-                 logo: "images/alak pa more.jpg"
-             },
-             {
-                 rank: 7,
-                 name: "Mix Blood",
-                 wins: 1,
-                 losses: 2,
-                 streak: "L1",
-                 logo: "images/bllod.jpg"
-             },
-             {
-                 rank: 8,
-                 name: "Eldorado",
-                 wins: 0,
-                 losses: 2,
-                 streak: "L2",
-                 logo: "images/eldo.jpg"
-             },
-             {
-                 rank: 9,
-                 name: "Underrated",
-                 wins: 0,
-                 losses: 2,
-                 streak: "L2",
-                 logo: "images/under.jpg"
-             },
-             {
-                 rank: 10,
-                 name: "D'League",
-                 wins: 0,
-                 losses: 1,
-                 streak: "L1",
-                 logo: "images/dalig.jpg"
-             },
-             {
-                 rank: 11,
-                 name: "Bombateros",
-                 wins: 0,
-                 losses: 3,
-                 streak: "L3",
-                 logo: "images/bomba.jpg"
-             },
-        ];
 
         // Function to get rank badge class
         function getRankBadgeClass(rank) {
@@ -197,7 +120,7 @@
                         <td class="px-6 py-4">
                             <div class="flex items-center">
                                 <img src="${team.logo}" alt="${team.name} logo" class="w-10 h-10 object-contain mr-3">
-                                <span class="font-semibold text-gray-900">${team.name}</span>
+                                <a href="team.html?id=${team.id}" class="font-semibold text-gray-900 hover:text-orange-600 transition-colors">${team.name}</a>
                             </div>
                         </td>
                         <td class="px-6 py-4 text-center font-semibold text-gray-900">${team.wins}</td>

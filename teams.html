@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams - AMTODA Basketball</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-orange-50 to-blue-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-orange-600">AMTODA Basketball</div>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-600 font-semibold transition-colors">Standings</a>
+                    <a href="schedule.html" class="text-gray-700 hover:text-orange-600 font-semibold transition-colors">Schedule</a>
+                    <a href="teams.html" class="text-orange-600 font-semibold">Teams</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <div class="inline-block bg-orange-600 text-white px-6 py-3 rounded-full mb-4">
+                <span class="text-sm font-semibold tracking-wider">2025-26 SEASON</span>
+            </div>
+            <h1 class="text-5xl font-bold text-gray-900 mb-2">All Teams</h1>
+            <p class="text-gray-600 text-lg">Click on a team to view their roster</p>
+        </header>
+
+        <div class="max-w-7xl mx-auto">
+            <div id="teams-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Teams will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        function renderTeams() {
+            const grid = document.getElementById('teams-grid');
+            
+            let html = '';
+            teams.forEach(team => {
+                html += `
+                    <a href="team.html?id=${team.id}" class="block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow overflow-hidden transform hover:-translate-y-1 transition-transform">
+                        <div class="bg-gradient-to-r from-orange-600 to-orange-500 px-6 py-4">
+                            <div class="flex items-center justify-center">
+                                <img src="${team.logo}" alt="${team.name}" class="w-20 h-20 object-contain">
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">${team.name}</h3>
+                            <div class="flex justify-center space-x-6 text-sm">
+                                <div>
+                                    <p class="text-gray-500 font-semibold">Wins</p>
+                                    <p class="text-2xl font-bold text-green-600">${team.wins}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 font-semibold">Losses</p>
+                                    <p class="text-2xl font-bold text-red-600">${team.losses}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 font-semibold">Rank</p>
+                                    <p class="text-2xl font-bold text-orange-600">#${team.rank}</p>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <span class="inline-block px-4 py-2 ${team.streak.startsWith('W') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} rounded-full text-sm font-semibold">
+                                    ${team.streak}
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            });
+
+            grid.innerHTML = html;
+        }
+
+        renderTeams();
+    </script>
+</body>
+</html>
